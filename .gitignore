@@ -1,2 +1,6 @@
+#project
+assets/css/scss
+
+#common
 .idea
 node_modules

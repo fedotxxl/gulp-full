@@ -1,8 +1,6 @@
 var gulp = require('gulp');
 var del = require('del');
-var runSequence = require('run-sequence');
 var path = require('path');
-var rimraf = require('gulp-rimraf');
 var $ = require('gulp-load-plugins')({ lazy: false });
 
 var paths = {
