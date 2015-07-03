@@ -2,5 +2,6 @@
 assets/css/scss
 
 #common
+build
 .idea
 node_modules

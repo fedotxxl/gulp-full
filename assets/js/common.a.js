@@ -1,8 +1,11 @@
 angular.module("app").
-    factory("commonA", function() {
-      return {
-        do: function() {
-          console.log("common.a")
+    factory("commonA", function () {
+        return {
+            get: function () {
+                return "commonA"
+            },
+            do: function () {
+                console.log("common.a")
+            }
         }
-      }
     });
