@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head ng-app="app">
+<head>
     <meta charset="utf-8">
     <title>ero-pic.net</title>
     <base href="/">
@@ -9,14 +9,18 @@
     <!--CSS-->
     <!-- @@include=_css.html -->
 
+    <!-- build:css /css/pages/<!-- @@var page -->.css-->
     <!-- @@placeholder =css -->
+    <!-- endbuild -->
 
     <!--JS-->
     <!-- @@include=_js.html -->
 
+    <!-- build:js /js/compiled/pages/<!-- @@var page -->.js-->
     <!-- @@placeholder =js -->
+    <!-- endbuild -->
 </head>
-<body>
+<body ng-app="app">
 
 <div id="header">
     <!-- @@include=_header.html -->
