@@ -33,6 +33,7 @@ gulp.task("scss", function () {
     return gulp.src(pathAny(paths.scss.src))
         .pipe($.sourcemaps.init())
         .pipe($.sass())
+        .pipe($.autoprefixer('last 1 version', '> 1%', 'ie 8'))
         .pipe($.sourcemaps.write())
         .pipe(gulp.dest(paths.scss.target));
 });
@@ -90,7 +91,7 @@ gulp.task("assets:copy-original", function() {
 gulp.task("htmlExtend", function () {
     return gulp
         .src(pathAny(paths.src, "html"))
-        .pipe($.htmlExtend({annotations: false, verbose: true, root: paths.target.root}))
+        .pipe($.htmlExtend({annotations: false, verbose: true, root: paths.src}))
         .pipe(gulp.dest(paths.target.root))
 });
 

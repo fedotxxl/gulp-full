@@ -5,6 +5,7 @@
   "devDependencies": {
     "del": "^1.2.0",
     "gulp": "git://github.com/gulpjs/gulp.git#4.0",
+    "gulp-autoprefixer": "^2.3.1",
     "gulp-filter": "^2.0.2",
     "gulp-html-extend": "^1.1.5",
     "gulp-if": "^1.2.5",
