@@ -11,7 +11,9 @@ var paths = {
         target: "./build/sources/assets"
     },
     target: {
-        root: "./build"
+        root: "./build",
+        js: "./build/js",
+        css: "./build/css"
     },
     scss: {
         src: "./scss",
@@ -21,6 +23,10 @@ var paths = {
 
 gulp.task("clean", function (cb) {
     del(paths.target.root, cb);
+});
+
+gulp.task("clean:assets", function (cb) {
+    del([paths.target.js, paths.target.css], cb);
 });
 
 gulp.task("scss", function () {
@@ -100,6 +106,22 @@ gulp.task("build.dev", gulp.series("clean", "scss", "htmlExtend", "assets"));
 gulp.task("build.prod", gulp.series("clean", "scss", "useref", "assets:copy-original"));
 
 gulp.task("webserver", gulp.series("build.dev", "webserver:run"));
+
+(function watch() {
+    gulp.task("watch:scss", function() {
+        $.watch(pathAny(paths.scss.src), gulp.series("scss"))
+    });
+
+    gulp.task("watch:assets", function() {
+        $.watch(pathAny(paths.assets.src), gulp.series("clean:assets", "assets"))
+    });
+
+    gulp.task("watch:html", function() {
+        $.watch(pathAny(paths.src), gulp.series("build.dev"))
+    });
+
+    gulp.task("watch", gulp.series("build.dev", gulp.parallel("webserver:run", "watch:scss", "watch:assets", "watch:html")));
+})();
 
 function pathAny(dir, extension) {
     return path.join(dir, "**/*." + (extension || "*"))
